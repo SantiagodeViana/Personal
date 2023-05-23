@@ -1,7 +1,11 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Sudoku {
-    public static void solucion(int[][]matriz, boolean[][]visitados) { //Resolución de sudokus, mediante backtracking
+    public static void solucion(int[][]matriz, boolean[][]visitados) { //Resolución de sudokus mediante backtracking
         Matriz.inicializarVisitados(matriz, visitados);
         solucionAux(matriz, visitados, 0, 0);
+
         Matriz.printValores(matriz);
     }
 
@@ -68,5 +72,20 @@ public class Sudoku {
             }
         }
         return aceptable;
+    }
+
+    public static int insertar (Scanner teclado){ //Método para leer números del teclado y devolverlas
+        int casilla = 0;
+        do{
+            try{
+                casilla = teclado.nextInt();
+            }
+            catch (InputMismatchException e) { //Muestra error en caso de no recibirse números
+                System.out.println("Valor incorrecto. Por favor introduce un numero.");
+                teclado.nextLine(); //teclado.nextLine() limpia el valor introducido en el teclado, evitando que el mensaje se muestre indefinidamente.
+            }
+        }  while (casilla < 0 || casilla > 9);
+
+        return casilla;
     }
 }
