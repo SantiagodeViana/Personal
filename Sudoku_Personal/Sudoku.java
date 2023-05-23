@@ -1,5 +1,5 @@
 public class Sudoku {
-    public static void solucion(int[][]matriz, boolean[][]visitados) {
+    public static void solucion(int[][]matriz, boolean[][]visitados) { //Resolución de sudokus, mediante backtracking
         Matriz.inicializarVisitados(matriz, visitados);
         solucionAux(matriz, visitados, 0, 0);
         Matriz.printValores(matriz);
