@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+//PROGRAMA PARA INTRODUCIR Y RESOLVER SUDOKUS
+
 public class Main {
     public static void main(String[] args) {
 
@@ -56,13 +58,14 @@ public class Main {
                 System.out.print("Celda #" + (j+1) + ": ");
                 sudoku[i][j] = Sudoku.insertar(teclado);
             }
-
+            System.out.println("¿La fila actual es correcta? S/N");
+            Matriz.printValores(sudoku);
             do{
                 respuesta = teclado.next().charAt(0);
-                if (respuesta == 'n' && respuesta == 'N'){
+                if (respuesta == 'n' || respuesta == 'N'){
                     System.out.println("¿Cuál celda se debe modificar?");
-                    input = (teclado.nextInt() + 1);
-                    System.out.print("Celda #" + (input+1) + ": ");
+                    input = (teclado.nextInt() - 1);
+                    System.out.print("Celda #" + (input + 1) + ": ");
                     sudoku[i][input] = Sudoku.insertar(teclado);
                     System.out.println("¿La fila actual es correcta? S/N");
                     Matriz.printValores(sudoku);
